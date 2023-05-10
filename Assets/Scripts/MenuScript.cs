@@ -26,7 +26,9 @@ public class MenuScript : MonoBehaviour
 
     public GameObject[] menuItems;
 
-    BaseAbility currentAbility;
+    public BaseAbility currentAbility;
+
+    public Text CurrentPowerText;
 
 
     void Start()
@@ -34,15 +36,16 @@ public class MenuScript : MonoBehaviour
         manager = FindObjectOfType<Manager>();
         Cursor.lockState = CursorLockMode.Confined;
         inputs = FindObjectOfType<StarterAssetsInputs>();
-        currentAbility = FindObjectOfType<Shooting>();
     }
     void Update()
     {
+        CurrentPowerText.text = "Current power: " + currentAbility.GetType().ToString();
         if (Time.timeScale == 0.05f)
         {
             foreach (Transform item in transform)
             {
-                item.gameObject.SetActive(true);
+                item.GetChild(0).gameObject.SetActive(true);
+                item.GetChild(1).gameObject.SetActive(true);
             }
 
             Vector2 joystickValue = Gamepad.current.rightStick.ReadValue();
@@ -90,30 +93,21 @@ public class MenuScript : MonoBehaviour
         {
             foreach (Transform item in transform)
             {
-                item.gameObject.SetActive(false);
+                foreach (Transform objectje in item.transform)
+                {
+                    objectje.gameObject.SetActive(false);
+                }
             }
 
             foreach (GameObject item in menuItems)
             {
-                if (item.GetComponent<WheelMenuItem>().isActive)
+                if (item.GetComponent<WheelMenuItem>().isActive && FindObjectOfType<Manager>().Inventory.Contains(item.GetComponent<BaseAbility>()))
                 {
                     currentAbility = item.GetComponent<BaseAbility>();
                     currentAbility.Activate();
                     item.GetComponent<WheelMenuItem>().Deselect();
                 }
             }
-        }
-
-    }
-
-    bool CheckAvailability(int i)
-    {
-        if (manager.AvailablePowers.Contains(i))
-            return true;
-        else
-        {
-            Debug.Log("This skill isn't available yet, brew it in the center when you have all the ingredients!");
-            return false;
         }
 
     }

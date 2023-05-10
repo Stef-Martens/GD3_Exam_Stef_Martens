@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cbd48d3289f704489b2c1838c9c3d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 605c59d61dcfc774389d8351989404ab, type: 3}
+  Image: {fileID: 21300000, guid: d7d1f31e4db905a4d9407f8435102bc0, type: 3}
   CircleColor: {r: 1, g: 0, b: 0, a: 1}
   AbilityName: Shoot
   Description: Base ability. Ability to shoot.
@@ -219,7 +219,28 @@ MonoBehaviour:
   CircleColor: {r: 0, g: 0.26026773, b: 1, a: 1}
   AbilityName: Freeze
   Description: Freeze your enemies for a short time!
-  Available: 0
+--- !u!1 &409572309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5195057572987985436, guid: a73a93670bf100442af765df5981d676,
+    type: 3}
+  m_PrefabInstance: {fileID: 1452640277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &409572312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409572309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc2cdc2c60e70f44bde2cce09c75361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Image: {fileID: 21300000, guid: 436ce8ef8f85ed74496aac7667c05905, type: 3}
+  CircleColor: {r: 0.8396226, g: 0.29045042, b: 0.059407253, a: 1}
+  AbilityName: Shockwave
+  Description: Push enemies with a big shockwave!
 --- !u!1 &542508511
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +669,108 @@ LightProbeGroup:
   - {x: 7.1518564, y: 2.7763042, z: -11.2319765}
   - {x: 8.993203, y: 2.3566551, z: -8.796325}
   m_Dering: 1
+--- !u!1 &910975006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 910975007}
+  - component: {fileID: 910975009}
+  - component: {fileID: 910975008}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &910975007
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910975006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1935791968}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &910975008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910975006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &910975009
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910975006}
+  m_CullTransparentMesh: 1
+--- !u!1 &924424608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4271758279740789994, guid: a73a93670bf100442af765df5981d676,
+    type: 3}
+  m_PrefabInstance: {fileID: 1452640277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &924424611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924424608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fbda09044d48945b86b266dc2e3181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Image: {fileID: 21300000, guid: 9060b91b4948f25489061a18f134fe5f, type: 3}
+  CircleColor: {r: 0.8301887, g: 0.73611647, b: 0.090067655, a: 1}
+  AbilityName: Necromance
+  Description: Spawn friendly skeletons to help you!
 --- !u!1 &1028513131
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,12 +1093,22 @@ PrefabInstance:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2795149274055016623, guid: a73a93670bf100442af765df5981d676,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3078319157718250704, guid: a73a93670bf100442af765df5981d676,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 547f3af51174cb44c906628c1facca48,
         type: 3}
+    - target: {fileID: 3952820846887763169, guid: a73a93670bf100442af765df5981d676,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4271758279740789994, guid: a73a93670bf100442af765df5981d676,
         type: 3}
       propertyPath: m_Name
@@ -1005,6 +1138,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LeftDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195057572987985436, guid: a73a93670bf100442af765df5981d676,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5195057573431371671, guid: a73a93670bf100442af765df5981d676,
         type: 3}
@@ -1103,6 +1241,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7348346775219177626, guid: a73a93670bf100442af765df5981d676,
+        type: 3}
+      propertyPath: CurrentPowerText
+      value: 
+      objectReference: {fileID: 910975008}
     - target: {fileID: 7348346775219177626, guid: a73a93670bf100442af765df5981d676,
         type: 3}
       propertyPath: WallBlueprintPrefab
@@ -1262,6 +1405,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257209629698354011, guid: a73a93670bf100442af765df5981d676,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898635528142551279, guid: a73a93670bf100442af765df5981d676,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9058238993221519598, guid: a73a93670bf100442af765df5981d676,
         type: 3}
@@ -1662,8 +1815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3461f396c7f94d9419ca5f5f51729abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AvailablePowers: 
-  Inventory: 
+  Inventory: []
 --- !u!4 &1873764436
 Transform:
   m_ObjectHideFlags: 0
@@ -1772,6 +1924,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 851734013}
+  - {fileID: 910975007}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

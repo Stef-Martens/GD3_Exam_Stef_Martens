@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Freeze : BaseAbility
+public class Shockwave : BaseAbility
 {
     public Sprite Image;
     public Color CircleColor;
@@ -24,7 +24,13 @@ public class Freeze : BaseAbility
         if (FindObjectOfType<MenuScript>().currentAbility == this)
         {
 
+
+
+
+
+
         }
+
     }
 
 

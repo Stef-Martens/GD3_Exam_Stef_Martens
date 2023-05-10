@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Freeze : BaseAbility
+public class Necromance : BaseAbility
 {
     public Sprite Image;
     public Color CircleColor;
@@ -10,7 +10,7 @@ public class Freeze : BaseAbility
     public string Description;
     public override int CooldownTime
     {
-        get { return 3; }
+        get { return 10; }
     }
 
 
@@ -20,9 +20,11 @@ public class Freeze : BaseAbility
         {
             ChangeUI(CircleColor, Image, AbilityName, Description);
         }
-
         if (FindObjectOfType<MenuScript>().currentAbility == this)
         {
+
+
+
 
         }
     }

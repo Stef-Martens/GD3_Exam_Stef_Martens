@@ -14,10 +14,23 @@ public class Shooting : BaseAbility
         get { return 0; }
     }
 
-
     public override void Activate()
     {
-        
+
+    }
+
+    public override void Update()
+    {
+        if (FindObjectOfType<MenuScript>().currentAbility == this)
+        {
+
+
+
+
+
+
+        }
+
     }
 
     public override void Start()

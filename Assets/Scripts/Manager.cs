@@ -6,29 +6,38 @@ using UnityEngine.InputSystem;
 
 public class Manager : MonoBehaviour
 {
-    public List<int> AvailablePowers;
-    public List<int> Inventory;
+    public List<BaseAbility> Inventory;
+
+
 
 
     void Start()
     {
-        AvailablePowers = new List<int>();
-        Inventory = new List<int>();
-        AvailablePowers.Add(1);
+        Inventory = new List<BaseAbility>();
+        Inventory.Add(FindObjectOfType<Shooting>());
     }
 
     void Update()
     {
+
         if (Gamepad.current.leftShoulder.IsPressed())
         {
             Time.timeScale = 0.05f;
         }
-
         else
             Time.timeScale = 1f;
+
+        if (Gamepad.current.aButton.wasPressedThisFrame)
+        {
+            AddInventory(FindObjectOfType<Necromance>());
+            AddInventory(FindObjectOfType<Shockwave>());
+            AddInventory(FindObjectOfType<Freeze>());
+            if (!Inventory.Contains(FindObjectOfType<Shooting>())) AddInventory(FindObjectOfType<Shooting>());
+        }
+
     }
 
-    public void AddInventory(int i)
+    public void AddInventory(BaseAbility i)
     {
         Inventory.Add(i);
     }
