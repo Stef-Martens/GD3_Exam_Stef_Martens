@@ -26,12 +26,15 @@ public class MenuScript : MonoBehaviour
 
     public GameObject[] menuItems;
 
+    BaseAbility currentAbility;
+
 
     void Start()
     {
         manager = FindObjectOfType<Manager>();
         Cursor.lockState = CursorLockMode.Confined;
         inputs = FindObjectOfType<StarterAssetsInputs>();
+        currentAbility = FindObjectOfType<Shooting>();
     }
     void Update()
     {
@@ -90,75 +93,15 @@ public class MenuScript : MonoBehaviour
                 item.gameObject.SetActive(false);
             }
 
-            /*if (doSpell)
+            foreach (GameObject item in menuItems)
             {
-                switch (selection)
+                if (item.GetComponent<WheelMenuItem>().isActive)
                 {
-                    case 0:
-                        // nog niks
-                        break;
-
-                    case 1:
-                        // shoot
-                        if (CheckAvailability(selection))
-                            FindObjectOfType<Player>().ShootPossible = true;
-                        break;
-
-                    case 2:
-                        // wall
-                        if (CheckAvailability(selection))
-                            Instantiate(WallBlueprintPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-                        break;
-
-                    case 3:
-                        // mage
-                        if (CheckAvailability(selection))
-                            Instantiate(TowerBlueprintPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-                        break;
-
-                    case 4:
-                        // sudden death
-                        if (CheckAvailability(selection))
-                        {
-                            foreach (Enemy enemy in FindObjectsOfType<Enemy>())
-                            {
-                                Destroy(enemy.gameObject);
-                            }
-                            foreach (Earther enemy in FindObjectsOfType<Earther>())
-                            {
-                                Destroy(enemy.gameObject);
-                            }
-                            foreach (Nacromancer Nacromancer in FindObjectsOfType<Nacromancer>())
-                            {
-                                Destroy(Nacromancer.gameObject);
-                            }
-                        }
-
-                        break;
-
-                    case 5:
-                        // freeze
-                        if (CheckAvailability(selection))
-                        {
-                            FindObjectOfType<Manager>().FreezeEnemies = true;
-                            Invoke("StopFreeze", 3f);
-                        }
-
-                        break;
-
-                    case 6:
-                        // nog niks
-                        break;
-
-                    case 7:
-                        // nog niks
-                        break;
+                    currentAbility = item.GetComponent<BaseAbility>();
+                    currentAbility.Activate();
+                    item.GetComponent<WheelMenuItem>().Deselect();
                 }
-                if (selection != 1)
-                    FindObjectOfType<Player>().ShootPossible = false;
-                doSpell = false;
-            }*/
-
+            }
         }
 
     }

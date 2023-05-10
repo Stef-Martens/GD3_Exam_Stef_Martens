@@ -10,29 +10,28 @@ public class WheelMenuItem : MonoBehaviour
     public Image background;
     public GameObject description;
     public GameObject title;
-    public GameObject ingredients;
+
+    public bool isActive = false;
     void Start()
     {
         background.color = baseColor;
         description.SetActive(false);
         title.SetActive(false);
-        ingredients.SetActive(false);
     }
 
     public void Select()
     {
+        isActive = true;
         background.color = hoverColor;
         description.SetActive(true);
         title.SetActive(true);
-        ingredients.SetActive(true);
     }
 
     public void Deselect()
     {
+        isActive = false;
         background.color = baseColor;
         description.SetActive(false);
         title.SetActive(false);
-        ingredients.SetActive(false);
-
     }
 }
