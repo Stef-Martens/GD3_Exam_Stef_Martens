@@ -15,25 +15,14 @@ public class Manager : MonoBehaviour
     {
         Inventory = new List<BaseAbility>();
         Inventory.Add(FindObjectOfType<Shooting>());
+        AddInventory(FindObjectOfType<Freeze>());
     }
 
     void Update()
     {
 
-        if (Gamepad.current.leftShoulder.IsPressed())
-        {
-            Time.timeScale = 0.05f;
-        }
-        else
-            Time.timeScale = 1f;
 
-        if (Gamepad.current.aButton.wasPressedThisFrame)
-        {
-            AddInventory(FindObjectOfType<Necromance>());
-            AddInventory(FindObjectOfType<Shockwave>());
-            AddInventory(FindObjectOfType<Freeze>());
-            if (!Inventory.Contains(FindObjectOfType<Shooting>())) AddInventory(FindObjectOfType<Shooting>());
-        }
+
 
     }
 
