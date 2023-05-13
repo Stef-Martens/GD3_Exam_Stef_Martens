@@ -21,7 +21,12 @@ public class Manager : MonoBehaviour
     void Update()
     {
 
-
+        /* if (Gamepad.current.leftShoulder.IsPressed())
+         {
+             Time.timeScale = 0.05f;
+         }
+         else
+             Time.timeScale = 1f;*/
 
 
     }

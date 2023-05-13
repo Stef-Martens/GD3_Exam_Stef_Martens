@@ -1923,6 +1923,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &588783257 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 909145524, guid: a4cc29bc3b232ef469ac1408fa0fa8b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 178889315}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5de54c084f472845b61ee9a97cb8a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619906406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,6 +1948,7 @@ GameObject:
   - component: {fileID: 619906409}
   - component: {fileID: 619906408}
   - component: {fileID: 619906407}
+  - component: {fileID: 619906412}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -1955,9 +1968,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 985add12ee4836e40b7241671b1d892c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fogWar: {fileID: 0}
+  fogWar: {fileID: 588783257}
   visibility: 0
-  additionalRadius: 0
+  additionalRadius: 2
 --- !u!135 &619906408
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1966,10 +1979,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619906406}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 5.22
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &619906409
 MeshRenderer:
@@ -2036,6 +2049,22 @@ Transform:
   m_Father: {fileID: 172565696}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &619906412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619906406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c40c6abb9d36f459ae7a1cf08f9c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  maxHealth: 100
+  currentHealth: 0
+  attackRange: 2
 --- !u!1 &623206841
 GameObject:
   m_ObjectHideFlags: 0
