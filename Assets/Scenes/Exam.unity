@@ -123,6 +123,137 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &17860039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 17860041}
+  - component: {fileID: 17860040}
+  m_Layer: 0
+  m_Name: LineRenderer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!120 &17860040
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17860039}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 92c741eb0f17b4a44af2025b48d5957d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.034484863
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_UseWorldSpace: 1
+  m_Loop: 0
+--- !u!4 &17860041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17860039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.12, y: 9.25, z: 14.22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &27163084 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7448596418962278416, guid: 7b9531949e32e694493f68b06afcf377,
@@ -1390,6 +1521,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 909145524, guid: a4cc29bc3b232ef469ac1408fa0fa8b9, type: 3}
+      propertyPath: drawGizmos
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909145524, guid: a4cc29bc3b232ef469ac1408fa0fa8b9, type: 3}
       propertyPath: fogLerpSpeed
       value: 4.15
       objectReference: {fileID: 0}
@@ -1404,6 +1539,10 @@ PrefabInstance:
     - target: {fileID: 909145524, guid: a4cc29bc3b232ef469ac1408fa0fa8b9, type: 3}
       propertyPath: fogPlaneHeight
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909145524, guid: a4cc29bc3b232ef469ac1408fa0fa8b9, type: 3}
+      propertyPath: fogRevealers.Array.data[0].sightRange
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 909145524, guid: a4cc29bc3b232ef469ac1408fa0fa8b9, type: 3}
       propertyPath: fogRevealers.Array.data[1].sightRange
@@ -2138,6 +2277,7 @@ GameObject:
   - component: {fileID: 339515060}
   - component: {fileID: 339515063}
   - component: {fileID: 339515064}
+  - component: {fileID: 339515065}
   m_Layer: 0
   m_Name: Healer
   m_TagString: Untagged
@@ -2238,9 +2378,8 @@ MonoBehaviour:
   moveSpeed: 3
   maxHealth: 100
   currentHealth: 0
-  healRange: 5
-  healDuration: 1
-  healRate: 2
+  healRange: 3
+  healRate: 4
 --- !u!114 &339515064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2255,7 +2394,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fogWar: {fileID: 0}
   visibility: 0
-  additionalRadius: 0
+  additionalRadius: 2
+--- !u!135 &339515065
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339515058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &349354047 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5195057573449396781, guid: a73a93670bf100442af765df5981d676,
@@ -2278,6 +2430,9 @@ MonoBehaviour:
   CircleColor: {r: 1, g: 0, b: 0, a: 1}
   AbilityName: Shoot
   Description: Base ability. Ability to shoot.
+  lineRenderer: {fileID: 0}
+  Player: {fileID: 0}
+  Bullet: {fileID: 8657137228906698564, guid: 0127a20aa5540204bb51962b8300aaa8, type: 3}
 --- !u!1 &368801638 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7448596418950483142, guid: 7b9531949e32e694493f68b06afcf377,
@@ -3054,7 +3209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308708f50ac40094388af2f5690dd18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 5f111ceb2ea48e442a05614c9610da63, type: 3}
   CircleColor: {r: 0.57271266, g: 0.735849, b: 0.7052471, a: 1}
   AbilityName: Invisibility
   Description: Become invisible for a short amout of time
@@ -3076,7 +3231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5ed5ff69a50ac4bb77a26b2aa916ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: b3776774bf9165c48bd0003894fb214a, type: 3}
   CircleColor: {r: 0.8867924, g: 0.079476655, b: 0.74931383, a: 1}
   AbilityName: Enemy Takeover
   Description: Choose an enemy from the envrionment and make him your ally
@@ -3273,6 +3428,7 @@ GameObject:
   - component: {fileID: 619906408}
   - component: {fileID: 619906407}
   - component: {fileID: 619906412}
+  - component: {fileID: 619906413}
   m_Layer: 0
   m_Name: Dwarf
   m_TagString: Untagged
@@ -3385,10 +3541,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c40c6abb9d36f459ae7a1cf08f9c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1.5
   maxHealth: 100
   currentHealth: 0
   attackRange: 2
+--- !u!135 &619906413
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619906406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &623206841
 GameObject:
   m_ObjectHideFlags: 0
@@ -3613,7 +3782,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 3.07
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3851,7 +4020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5176008fb4c1d8841ab2f033cf75513c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: f0172d4c2beaf7d4681ad8726b621c8a, type: 3}
   CircleColor: {r: 0.735849, g: 0.07289071, b: 0.07289071, a: 1}
   AbilityName: Fire Comet
   Description: Aim and fire a big fire comet!
@@ -5433,7 +5602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a769a92d08f004c489130229ad9cf270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: e45d78986b21b0c4c83b3be126307b6b, type: 3}
   CircleColor: {r: 0.4682199, g: 0.7830189, b: 0.05540227, a: 1}
   AbilityName: Sudden Death
   Description: Kill all of the close by enemies!
@@ -5625,6 +5794,7 @@ GameObject:
   - component: {fileID: 2044042549}
   - component: {fileID: 2044042548}
   - component: {fileID: 2044042553}
+  - component: {fileID: 2044042554}
   m_Layer: 0
   m_Name: Necromancer
   m_TagString: Untagged
@@ -5646,7 +5816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fogWar: {fileID: 0}
   visibility: 0
-  additionalRadius: 0
+  additionalRadius: 2
 --- !u!135 &2044042549
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5737,13 +5907,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cd406482c99f34e8022a1800cff09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1
   maxHealth: 100
   currentHealth: 0
   attackRange: 5
   SpawnInterval: 10
   SkeletonsPrefab: {fileID: 3690334530929943934, guid: d82b50a0b02d9284a84e0fba12c461c9,
     type: 3}
+--- !u!135 &2044042554
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044042547}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2111059764
 GameObject:
   m_ObjectHideFlags: 0

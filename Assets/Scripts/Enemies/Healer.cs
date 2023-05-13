@@ -6,12 +6,10 @@ public class Healer : BaseEnemy
 {
     GameObject enemyToHeal;
 
-    public float healRange = 5f;
+    public float healRange = 3f;
 
-    public float healDuration = 5f;
     public float healRate = 2f;
 
-    private float healTimer = 0f;
 
 
 
@@ -21,17 +19,11 @@ public class Healer : BaseEnemy
         {
             if (Vector3.Distance(transform.position, enemyToHeal.transform.position) <= healRange)
             {
-                healTimer += Time.deltaTime;
+                enemyToHeal.GetComponent<BaseEnemy>().currentHealth += Time.deltaTime * healRate;
 
-                // Gradually increase the player's health over the heal duration
-                if (healTimer < healDuration)
-                {
-                    enemyToHeal.GetComponent<BaseEnemy>().currentHealth += Time.deltaTime * healRate;
-                }
             }
             else
             {
-                healTimer = 0f;
                 // Move towards the enemy to heal
                 Vector3 direction = (enemyToHeal.transform.position - transform.position).normalized;
                 transform.position += direction * moveSpeed * Time.deltaTime;
@@ -43,7 +35,6 @@ public class Healer : BaseEnemy
         }
         else
         {
-            healTimer = 0f;
             MoveToStartPosition();
 
             Collider[] colliders = Physics.OverlapSphere(playerTransform.position, 6f);
