@@ -26,7 +26,7 @@ public class Manager : MonoBehaviour
              Time.timeScale = 0.05f;
          }
          else
-             Time.timeScale = 1f;*/
+             Time.timeScale = 1f; */
 
 
     }

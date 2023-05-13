@@ -941,8 +941,9 @@ GameObject:
   - component: {fileID: 339515062}
   - component: {fileID: 339515061}
   - component: {fileID: 339515060}
+  - component: {fileID: 339515063}
   m_Layer: 0
-  m_Name: Eye 2
+  m_Name: Healer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -956,7 +957,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339515058}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 0.5, z: 7}
+  m_LocalPosition: {x: -4.97, y: 0.5, z: 4.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1026,6 +1027,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339515058}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &339515063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339515058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad609aa239762cd4cb3a8413eeae4d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  maxHealth: 100
+  currentHealth: 0
+  healRange: 5
+  healDuration: 1
+  healRate: 2
 --- !u!1 &349354047 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5195057573449396781, guid: a73a93670bf100442af765df5981d676,
@@ -1950,7 +1969,7 @@ GameObject:
   - component: {fileID: 619906407}
   - component: {fileID: 619906412}
   m_Layer: 0
-  m_Name: Monster
+  m_Name: Dwarf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3517,8 +3536,9 @@ GameObject:
   - component: {fileID: 2044042550}
   - component: {fileID: 2044042549}
   - component: {fileID: 2044042548}
+  - component: {fileID: 2044042553}
   m_Layer: 0
-  m_Name: Monster
+  m_Name: Necromancer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3547,10 +3567,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044042547}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2044042550
 MeshRenderer:
@@ -3572,7 +3592,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 45265ab711efe484289d543853391cf7, type: 2}
+  - {fileID: 2100000, guid: 92c741eb0f17b4a44af2025b48d5957d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3610,13 +3630,32 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044042547}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0.5, z: -12}
+  m_LocalPosition: {x: -6.94, y: 0.5, z: 3.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 172565696}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2044042553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044042547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1cd406482c99f34e8022a1800cff09a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  maxHealth: 100
+  currentHealth: 0
+  attackRange: 5
+  SpawnInterval: 10
+  SkeletonsPrefab: {fileID: 3690334530929943934, guid: d82b50a0b02d9284a84e0fba12c461c9,
+    type: 3}
 --- !u!1 &2111059764
 GameObject:
   m_ObjectHideFlags: 0

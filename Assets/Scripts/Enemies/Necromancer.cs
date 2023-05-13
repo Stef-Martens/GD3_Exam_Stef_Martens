@@ -2,17 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Necromancer : MonoBehaviour
+public class Necromancer : BaseEnemy
 {
-    // Start is called before the first frame update
-    void Start()
+    public float attackRange = 2f;
+
+    public float SpawnInterval = 10f;
+
+    float lastAttackTime;
+
+    public GameObject SkeletonsPrefab;
+
+
+    protected override void Attack()
     {
-        
+        if (Vector3.Distance(transform.position, playerTransform.position) <= attackRange)
+        {
+            // Check if 2 seconds have elapsed since the last attack
+            if (Time.time - lastAttackTime >= SpawnInterval)
+            {
+                SpawnSkeletons();
+                // Update the last attack time
+                lastAttackTime = Time.time;
+            }
+        }
+        else
+        {
+            // Move towards the player
+            Vector3 direction = (playerTransform.position - transform.position).normalized;
+            transform.position += direction * moveSpeed * Time.deltaTime;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void SpawnSkeletons()
     {
-        
+        for (int i = 0; i < 3; i++)
+        {
+            Vector2 randomPos = Random.insideUnitCircle * 3;
+            Vector3 spawnPos = new Vector3(randomPos.x, 0.5f, randomPos.y) + transform.position;
+            GameObject skelet = Instantiate(SkeletonsPrefab, spawnPos, Quaternion.identity);
+            skelet.transform.parent = gameObject.transform;
+        }
     }
 }
