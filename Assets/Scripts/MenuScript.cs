@@ -39,7 +39,7 @@ public class MenuScript : MonoBehaviour
     }
     void Update()
     {
-        CurrentPowerText.text = "Current power: " + currentAbility.GetType().ToString();
+        CurrentPowerText.text = currentAbility.GetType().ToString();
         if (Time.timeScale == 0.05f)
         {
             foreach (Transform item in transform)

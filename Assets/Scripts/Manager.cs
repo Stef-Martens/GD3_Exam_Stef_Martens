@@ -8,25 +8,39 @@ public class Manager : MonoBehaviour
 {
     public List<BaseAbility> Inventory;
 
+    public float Health = 200f;
 
+    public Text HealthText;
+
+    Cauldron cauldron;
+
+    public List<string> Ingredients;
 
 
     void Start()
     {
         Inventory = new List<BaseAbility>();
         Inventory.Add(FindObjectOfType<Shooting>());
-        AddInventory(FindObjectOfType<Freeze>());
+        cauldron = FindObjectOfType<Cauldron>();
     }
 
     void Update()
     {
+        HealthText.text = Health.ToString();
 
-        /* if (Gamepad.current.leftShoulder.IsPressed())
-         {
-             Time.timeScale = 0.05f;
-         }
-         else
-             Time.timeScale = 1f; */
+        if (Gamepad.current.leftShoulder.IsPressed() && !cauldron.MenuIsOpen)
+        {
+            Time.timeScale = 0.05f;
+        }
+        else if (cauldron.MenuIsOpen)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+
 
 
     }
