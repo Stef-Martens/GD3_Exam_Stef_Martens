@@ -148,6 +148,9 @@ MonoBehaviour:
   CircleColor: {r: 1, g: 0, b: 0, a: 1}
   AbilityName: Shoot
   Description: Base ability. Ability to shoot.
+  lineRenderer: {fileID: 0}
+  Player: {fileID: 0}
+  Bullet: {fileID: 0}
 --- !u!4 &107795032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2822878236747347973, guid: a4cc29bc3b232ef469ac1408fa0fa8b9,
@@ -176,6 +179,9 @@ MonoBehaviour:
   CircleColor: {r: 0, g: 0.26026773, b: 1, a: 1}
   AbilityName: Freeze
   Description: Freeze your enemies for a short time!
+  freezeDuration: 5
+  radius: 10
+  cooldownImage: {fileID: 0}
 --- !u!1 &409572309 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5195057572987985436, guid: a73a93670bf100442af765df5981d676,
@@ -198,6 +204,8 @@ MonoBehaviour:
   CircleColor: {r: 0.8396226, g: 0.29045042, b: 0.059407253, a: 1}
   AbilityName: Shockwave
   Description: Push enemies with a big shockwave!
+  force: 10
+  radius: 10
 --- !u!1 &542508511
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,6 +975,9 @@ MonoBehaviour:
   CircleColor: {r: 0.735849, g: 0.07289071, b: 0.07289071, a: 1}
   AbilityName: Fire Comet
   Description: Aim and fire a big fire comet!
+  AimObject: {fileID: 0}
+  FirePrefab: {fileID: 0}
+  cooldownImage: {fileID: 0}
 --- !u!1001 &1452640277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1850,6 +1861,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Inventory: []
+  Health: 200
+  HealthText: {fileID: 0}
+  Ingredients: []
 --- !u!4 &1873764436
 Transform:
   m_ObjectHideFlags: 0

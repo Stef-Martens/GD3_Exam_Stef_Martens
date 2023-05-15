@@ -48,6 +48,7 @@ public class FireComet : BaseAbility
                 Debug.Log("Cooldown Finished");
             }
         }
+        
 
         if (FindObjectOfType<MenuScript>().currentAbility == this)
         {

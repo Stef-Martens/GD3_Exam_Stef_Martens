@@ -9,6 +9,8 @@ public class Dwarf : BaseEnemy
 
     float lastAttackTime;
 
+    public float DamageDone;
+
 
     protected override void Attack()
     {
@@ -19,7 +21,7 @@ public class Dwarf : BaseEnemy
             // Check if 2 seconds have elapsed since the last attack
             if (Time.time - lastAttackTime >= 2f)
             {
-                Debug.Log("hit");
+                FindObjectOfType<Manager>().Health -= DamageDone;
 
                 // Update the last attack time
                 lastAttackTime = Time.time;

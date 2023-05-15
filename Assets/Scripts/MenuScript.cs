@@ -18,7 +18,6 @@ public class MenuScript : MonoBehaviour
     private StarterAssetsInputs inputs;
     Manager manager;
 
-
     [DllImport("user32.dll")]
     public static extern bool SetCursorPos(int X, int Y);
 
@@ -29,6 +28,7 @@ public class MenuScript : MonoBehaviour
     public BaseAbility currentAbility;
 
     public Text CurrentPowerText;
+
 
 
     void Start()

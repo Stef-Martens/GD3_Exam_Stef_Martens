@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028465, g: 0.22571574, b: 0.30692294, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1587,7 +1587,7 @@ Transform:
   - {fileID: 2044042552}
   - {fileID: 920414394}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &178889315
 PrefabInstance:
@@ -1651,7 +1651,7 @@ PrefabInstance:
     - target: {fileID: 4025505425648756822, guid: a4cc29bc3b232ef469ac1408fa0fa8b9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4025505425648756822, guid: a4cc29bc3b232ef469ac1408fa0fa8b9,
         type: 3}
@@ -3644,6 +3644,7 @@ MonoBehaviour:
   currentHealth: 0
   Frozen: 0
   attackRange: 2
+  DamageDone: 10
 --- !u!135 &619906413
 SphereCollider:
   m_ObjectHideFlags: 0

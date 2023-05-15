@@ -69,11 +69,8 @@ MonoBehaviour:
   - {fileID: 4271758279740789994}
   - {fileID: 5195057574198338121}
   - {fileID: 5195057573431371671}
-  usingJoystick: 0
-  WallBlueprintPrefab: {fileID: 6463687198672934579, guid: 2deae022e6554d4478d6f0f70bb2e80d,
-    type: 3}
-  TowerBlueprintPrefab: {fileID: 1979056463920677399, guid: 67f4484b17b2dfe4f8c27081a5bbeed7,
-    type: 3}
+  currentAbility: {fileID: 0}
+  CurrentPowerText: {fileID: 0}
 --- !u!1001 &1633199893505220600
 PrefabInstance:
   m_ObjectHideFlags: 0

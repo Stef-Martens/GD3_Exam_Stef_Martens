@@ -138,7 +138,6 @@ MonoBehaviour:
   background: {fileID: 2798899733466298392}
   description: {fileID: 2337780765797212953}
   title: {fileID: 7913958673331709719}
-  ingredients: {fileID: 0}
   isActive: 0
 --- !u!1 &3485812306550988631
 GameObject:
