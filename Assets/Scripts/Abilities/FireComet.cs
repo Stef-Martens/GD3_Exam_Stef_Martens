@@ -4,6 +4,7 @@ using FischlWorks_FogWar;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class FireComet : BaseAbility
 {
@@ -24,10 +25,13 @@ public class FireComet : BaseAbility
     public GameObject AimObject;
     public GameObject FirePrefab;
 
+    public Image cooldownImage;
+
 
 
     public override void Update()
     {
+
         if (FindObjectOfType<Manager>().Inventory.Contains(this))
         {
             ChangeUI(CircleColor, Image, AbilityName, Description);
@@ -47,6 +51,7 @@ public class FireComet : BaseAbility
 
         if (FindObjectOfType<MenuScript>().currentAbility == this)
         {
+            cooldownImage.fillAmount = currentCooldownTime / CooldownTime;
             // mikken
             if (Gamepad.current.leftTrigger.IsPressed() && !isCooldownActive)
             {

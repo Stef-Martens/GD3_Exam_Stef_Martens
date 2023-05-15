@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Freeze : BaseAbility
 {
@@ -21,9 +22,12 @@ public class Freeze : BaseAbility
     public float radius = 10f;
     private bool isCooldownActive = false;
 
+    public Image cooldownImage;
 
     public override void Update()
     {
+
+
         if (FindObjectOfType<Manager>().Inventory.Contains(this))
         {
             ChangeUI(CircleColor, Image, AbilityName, Description);
@@ -43,6 +47,7 @@ public class Freeze : BaseAbility
 
         if (FindObjectOfType<MenuScript>().currentAbility == this)
         {
+            cooldownImage.fillAmount = currentCooldownTime / CooldownTime;
             if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive)
             {
                 Collider[] hitColliders = Physics.OverlapSphere(FindObjectOfType<ThirdPersonController>().transform.position, radius);
