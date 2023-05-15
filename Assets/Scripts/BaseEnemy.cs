@@ -12,6 +12,8 @@ public class BaseEnemy : MonoBehaviour
     protected bool isAttacking = false;
     protected Transform playerTransform;
 
+    public bool Frozen = false;
+
     protected virtual void Start()
     {
         currentHealth = maxHealth;
@@ -21,14 +23,18 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (!isAttacking)
+        if (!Frozen)
         {
-            MoveToStartPosition();
+            if (!isAttacking)
+            {
+                MoveToStartPosition();
+            }
+            else
+            {
+                Attack();
+            }
         }
-        else
-        {
-            Attack();
-        }
+
     }
 
     protected virtual void OnTriggerEnter(Collider other)

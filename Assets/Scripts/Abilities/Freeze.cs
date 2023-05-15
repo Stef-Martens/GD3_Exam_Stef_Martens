@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Freeze : BaseAbility
 {
@@ -13,6 +15,12 @@ public class Freeze : BaseAbility
         get { return 3; }
     }
 
+    private float currentCooldownTime = 0f;
+
+    public float freezeDuration = 5f;
+    public float radius = 10f;
+    private bool isCooldownActive = false;
+
 
     public override void Update()
     {
@@ -21,17 +29,55 @@ public class Freeze : BaseAbility
             ChangeUI(CircleColor, Image, AbilityName, Description);
         }
 
+        if (isCooldownActive)
+        {
+            currentCooldownTime -= Time.deltaTime;
+
+            if (currentCooldownTime <= 0)
+            {
+                isCooldownActive = false;
+                currentCooldownTime = 0;
+                Debug.Log("Cooldown Finished");
+            }
+        }
+
         if (FindObjectOfType<MenuScript>().currentAbility == this)
         {
+            if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive)
+            {
+                Collider[] hitColliders = Physics.OverlapSphere(FindObjectOfType<ThirdPersonController>().transform.position, radius);
 
+                foreach (Collider col in hitColliders)
+                {
+
+                    if (col.GetComponent<BaseEnemy>())
+                    {
+                        col.GetComponent<BaseEnemy>().Frozen = true;
+                        StartCoroutine(UnfreezeEnemiesAfterDelay(col.GetComponent<BaseEnemy>()));
+                    }
+
+                }
+                ResetCooldown();
+
+            }
         }
     }
 
-
-    public override void Activate()
+    void ResetCooldown()
     {
 
+        isCooldownActive = true;
+        currentCooldownTime = CooldownTime;
+        Debug.Log("Cooldown Started");
+
     }
+
+    IEnumerator UnfreezeEnemiesAfterDelay(BaseEnemy enemy)
+    {
+        yield return new WaitForSeconds(freezeDuration);
+        enemy.Frozen = false;
+    }
+
 
     public override void Start()
     {

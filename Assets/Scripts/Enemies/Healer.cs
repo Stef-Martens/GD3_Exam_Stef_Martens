@@ -15,40 +15,44 @@ public class Healer : BaseEnemy
 
     protected override void Update()
     {
-        if (enemyToHeal)
+        if (!Frozen)
         {
-            if (Vector3.Distance(transform.position, enemyToHeal.transform.position) <= healRange)
+            if (enemyToHeal)
             {
-                enemyToHeal.GetComponent<BaseEnemy>().currentHealth += Time.deltaTime * healRate;
+                if (Vector3.Distance(transform.position, enemyToHeal.transform.position) <= healRange)
+                {
+                    enemyToHeal.GetComponent<BaseEnemy>().currentHealth += Time.deltaTime * healRate;
 
+                }
+                else
+                {
+                    // Move towards the enemy to heal
+                    Vector3 direction = (enemyToHeal.transform.position - transform.position).normalized;
+                    transform.position += direction * moveSpeed * Time.deltaTime;
+                }
+
+
+                if (enemyToHeal.GetComponent<BaseEnemy>().currentHealth >= maxHealth)
+                    enemyToHeal = null;
             }
             else
             {
-                // Move towards the enemy to heal
-                Vector3 direction = (enemyToHeal.transform.position - transform.position).normalized;
-                transform.position += direction * moveSpeed * Time.deltaTime;
-            }
+                MoveToStartPosition();
 
-
-            if (enemyToHeal.GetComponent<BaseEnemy>().currentHealth >= maxHealth)
-                enemyToHeal = null;
-        }
-        else
-        {
-            MoveToStartPosition();
-
-            Collider[] colliders = Physics.OverlapSphere(playerTransform.position, 6f);
-            foreach (Collider collider in colliders)
-            {
-                if (collider.gameObject.GetComponent<BaseEnemy>())
+                Collider[] colliders = Physics.OverlapSphere(playerTransform.position, 6f);
+                foreach (Collider collider in colliders)
                 {
-                    if (collider.gameObject.GetComponent<BaseEnemy>().currentHealth < maxHealth)
+                    if (collider.gameObject.GetComponent<BaseEnemy>())
                     {
-                        enemyToHeal = collider.gameObject;
-                        break;
+                        if (collider.gameObject.GetComponent<BaseEnemy>().currentHealth < maxHealth)
+                        {
+                            enemyToHeal = collider.gameObject;
+                            break;
+                        }
                     }
                 }
             }
         }
+
     }
 }

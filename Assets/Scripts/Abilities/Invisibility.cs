@@ -28,11 +28,6 @@ public class Invisibility : BaseAbility
     }
 
 
-    public override void Activate()
-    {
-
-    }
-
     public override void Start()
     {
 

@@ -28,11 +28,6 @@ public class EnemyTakeover : BaseAbility
     }
 
 
-    public override void Activate()
-    {
-
-    }
-
     public override void Start()
     {
 

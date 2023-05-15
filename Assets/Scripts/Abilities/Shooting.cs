@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -18,11 +19,6 @@ public class Shooting : BaseAbility
     public LineRenderer lineRenderer;
     public GameObject Player;
     public GameObject Bullet;
-
-    public override void Activate()
-    {
-
-    }
 
     public override void Update()
     {

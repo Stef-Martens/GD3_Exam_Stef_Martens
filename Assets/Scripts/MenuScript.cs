@@ -104,7 +104,6 @@ public class MenuScript : MonoBehaviour
                 if (item.GetComponent<WheelMenuItem>().isActive && FindObjectOfType<Manager>().Inventory.Contains(item.GetComponent<BaseAbility>()))
                 {
                     currentAbility = item.GetComponent<BaseAbility>();
-                    currentAbility.Activate();
                     item.GetComponent<WheelMenuItem>().Deselect();
                 }
             }

@@ -30,11 +30,6 @@ public class Necromance : BaseAbility
     }
 
 
-    public override void Activate()
-    {
-
-    }
-
     public override void Start()
     {
 

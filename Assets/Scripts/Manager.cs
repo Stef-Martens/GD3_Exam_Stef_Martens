@@ -21,6 +21,10 @@ public class Manager : MonoBehaviour
     {
         Inventory = new List<BaseAbility>();
         Inventory.Add(FindObjectOfType<Shooting>());
+        Inventory.Add(FindObjectOfType<Freeze>());
+        Inventory.Add(FindObjectOfType<Shockwave>());
+        Inventory.Add(FindObjectOfType<Necromance>());
+        Inventory.Add(FindObjectOfType<FireComet>());
         cauldron = FindObjectOfType<Cauldron>();
     }
 

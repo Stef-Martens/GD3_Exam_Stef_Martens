@@ -28,10 +28,6 @@ public class SuddenDeath : BaseAbility
     }
 
 
-    public override void Activate()
-    {
-
-    }
 
     public override void Start()
     {

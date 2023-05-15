@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Shockwave : BaseAbility
 {
@@ -13,6 +15,12 @@ public class Shockwave : BaseAbility
         get { return 3; }
     }
 
+    public float force = 10f;
+    public float radius = 10f;
+
+    private bool isCooldownActive = false;
+    private float currentCooldownTime = 0f;
+
 
     public override void Update()
     {
@@ -21,22 +29,56 @@ public class Shockwave : BaseAbility
             ChangeUI(CircleColor, Image, AbilityName, Description);
         }
 
+        if (isCooldownActive)
+        {
+            currentCooldownTime -= Time.deltaTime;
+
+            if (currentCooldownTime <= 0)
+            {
+                isCooldownActive = false;
+                currentCooldownTime = 0;
+            }
+        }
+
         if (FindObjectOfType<MenuScript>().currentAbility == this)
         {
 
+            if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive)
+            {
+                Collider[] hitColliders = Physics.OverlapSphere(FindObjectOfType<ThirdPersonController>().transform.position, radius);
 
+                foreach (Collider col in hitColliders)
+                {
 
+                    if (col.GetComponent<BaseEnemy>())
+                    {
+                        Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
 
+                        if (rb != null)
+                        {
+                            Vector3 direction = rb.transform.position - FindObjectOfType<ThirdPersonController>().transform.position;
+                            float distance = direction.magnitude;
 
+                            float falloff = 1 - Mathf.Clamp01(distance / radius);
+                            Vector3 forceVector = direction.normalized * force * falloff;
+
+                            rb.AddForce(forceVector, ForceMode.Impulse);
+                        }
+                    }
+
+                }
+                ResetCooldown();
+
+            }
 
         }
 
     }
 
-
-    public override void Activate()
+    void ResetCooldown()
     {
-
+        isCooldownActive = true;
+        currentCooldownTime = CooldownTime;
     }
 
     public override void Start()

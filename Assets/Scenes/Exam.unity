@@ -2150,6 +2150,8 @@ MonoBehaviour:
   CircleColor: {r: 0, g: 0.26026773, b: 1, a: 1}
   AbilityName: Freeze
   Description: Freeze your enemies for a short time!
+  freezeDuration: 5
+  radius: 5
 --- !u!1 &338021604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2278,6 +2280,7 @@ GameObject:
   - component: {fileID: 339515063}
   - component: {fileID: 339515064}
   - component: {fileID: 339515065}
+  - component: {fileID: 339515066}
   m_Layer: 0
   m_Name: Healer
   m_TagString: Untagged
@@ -2378,6 +2381,7 @@ MonoBehaviour:
   moveSpeed: 3
   maxHealth: 100
   currentHealth: 0
+  Frozen: 0
   healRange: 3
   healRate: 4
 --- !u!114 &339515064
@@ -2408,6 +2412,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &339515066
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339515058}
+  serializedVersion: 2
+  m_Mass: 7
+  m_Drag: 0
+  m_AngularDrag: 5
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &349354047 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5195057573449396781, guid: a73a93670bf100442af765df5981d676,
@@ -3429,6 +3449,7 @@ GameObject:
   - component: {fileID: 619906407}
   - component: {fileID: 619906412}
   - component: {fileID: 619906413}
+  - component: {fileID: 619906414}
   m_Layer: 0
   m_Name: Dwarf
   m_TagString: Untagged
@@ -3544,6 +3565,7 @@ MonoBehaviour:
   moveSpeed: 1.5
   maxHealth: 100
   currentHealth: 0
+  Frozen: 0
   attackRange: 2
 --- !u!135 &619906413
 SphereCollider:
@@ -3558,6 +3580,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &619906414
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619906406}
+  serializedVersion: 2
+  m_Mass: 7
+  m_Drag: 0
+  m_AngularDrag: 5
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &623206841
 GameObject:
   m_ObjectHideFlags: 0
@@ -3964,6 +4002,121 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706620166}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &711650185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 711650189}
+  - component: {fileID: 711650188}
+  - component: {fileID: 711650187}
+  - component: {fileID: 711650186}
+  - component: {fileID: 711650190}
+  m_Layer: 0
+  m_Name: AimFireBall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!136 &711650186
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711650185}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!23 &711650187
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711650185}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &711650188
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711650185}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &711650189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711650185}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.21, y: 0.15, z: 0.32}
+  m_LocalScale: {x: 2.9736884, y: 0.02026063, z: 2.9736884}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &711650190
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711650185}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1 &782620904
 GameObject:
   m_ObjectHideFlags: 0
@@ -4024,6 +4177,9 @@ MonoBehaviour:
   CircleColor: {r: 0.735849, g: 0.07289071, b: 0.07289071, a: 1}
   AbilityName: Fire Comet
   Description: Aim and fire a big fire comet!
+  AimObject: {fileID: 711650185}
+  FirePrefab: {fileID: 7238921446007027655, guid: 557360222e0db12419b3cfe0c9d0af64,
+    type: 3}
 --- !u!1 &874795474
 GameObject:
   m_ObjectHideFlags: 0
@@ -4319,11 +4475,11 @@ RectTransform:
   m_Father: {fileID: 1255765778}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 592.9, y: 246.3}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -11, y: -85.7}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &928591688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5471,6 +5627,8 @@ MonoBehaviour:
   CircleColor: {r: 0.8396226, g: 0.29045042, b: 0.059407253, a: 1}
   AbilityName: Shockwave
   Description: Push enemies with a big shockwave!
+  force: 30
+  radius: 10
 --- !u!114 &1668009717 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 617838414433492446, guid: 61925a4a4e99004479415255739c736d,
@@ -5795,6 +5953,7 @@ GameObject:
   - component: {fileID: 2044042548}
   - component: {fileID: 2044042553}
   - component: {fileID: 2044042554}
+  - component: {fileID: 2044042555}
   m_Layer: 0
   m_Name: Necromancer
   m_TagString: Untagged
@@ -5910,6 +6069,7 @@ MonoBehaviour:
   moveSpeed: 1
   maxHealth: 100
   currentHealth: 0
+  Frozen: 0
   attackRange: 5
   SpawnInterval: 10
   SkeletonsPrefab: {fileID: 3690334530929943934, guid: d82b50a0b02d9284a84e0fba12c461c9,
@@ -5927,6 +6087,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2044042555
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044042547}
+  serializedVersion: 2
+  m_Mass: 7
+  m_Drag: 0
+  m_AngularDrag: 5
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2111059764
 GameObject:
   m_ObjectHideFlags: 0
