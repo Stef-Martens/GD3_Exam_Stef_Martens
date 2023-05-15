@@ -31,6 +31,7 @@ public class MenuScript : MonoBehaviour
 
 
 
+
     void Start()
     {
         manager = FindObjectOfType<Manager>();

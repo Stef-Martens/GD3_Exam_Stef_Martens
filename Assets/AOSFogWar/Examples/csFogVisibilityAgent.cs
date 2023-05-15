@@ -39,7 +39,7 @@ namespace FischlWorks_FogWar
         private bool visibility = false;
 
         [SerializeField]
-        [Range(0, 2)]
+        [Range(0, 4)]
         private int additionalRadius = 0;
 
         private List<MeshRenderer> meshRenderers = null;
