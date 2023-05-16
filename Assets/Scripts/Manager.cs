@@ -16,23 +16,27 @@ public class Manager : MonoBehaviour
 
     public List<string> Ingredients;
 
+    Map map;
+
 
     void Start()
     {
         Inventory = new List<BaseAbility>();
         Inventory.Add(FindObjectOfType<Shooting>());
-        Inventory.Add(FindObjectOfType<Freeze>());
+        /*Inventory.Add(FindObjectOfType<Freeze>());
         Inventory.Add(FindObjectOfType<Shockwave>());
         Inventory.Add(FindObjectOfType<Necromance>());
-        Inventory.Add(FindObjectOfType<FireComet>());
+        Inventory.Add(FindObjectOfType<FireComet>());*/
         cauldron = FindObjectOfType<Cauldron>();
+        map = FindObjectOfType<Map>();
+        
     }
 
     void Update()
     {
         HealthText.text = Health.ToString();
 
-        if (Gamepad.current.leftShoulder.IsPressed() && !cauldron.MenuIsOpen)
+        if (Gamepad.current.leftShoulder.IsPressed() && !cauldron.MenuIsOpen && !map.IsOpen)
         {
             Time.timeScale = 0.05f;
         }
@@ -44,6 +48,12 @@ public class Manager : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+
+
+        if (Gamepad.current.selectButton.wasPressedThisFrame && !cauldron.MenuIsOpen && !Gamepad.current.leftShoulder.IsPressed() && !map.IsOpen)
+            map.IsOpen = true;
+        else if (Gamepad.current.selectButton.wasPressedThisFrame && !cauldron.MenuIsOpen && !Gamepad.current.leftShoulder.IsPressed() && map.IsOpen)
+            map.IsOpen = false;
 
 
 

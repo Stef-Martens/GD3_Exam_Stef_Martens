@@ -20,9 +20,12 @@ public class ItemCauldron : MonoBehaviour
             {
                 if (FindObjectOfType<Manager>().Ingredients.Contains(item))
                     canBuy = true;
-
                 else
+                {
                     canBuy = false;
+                    break;
+                }
+
             }
 
             if (canBuy)
