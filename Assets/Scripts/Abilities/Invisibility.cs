@@ -16,14 +16,17 @@ public class Invisibility : BaseAbility
 
     public override void Update()
     {
-        if (FindObjectOfType<Manager>().Inventory.Contains(this))
+        if (!FindObjectOfType<Manager>().PauseMenu.activeSelf)
         {
-            ChangeUI(CircleColor, Image, AbilityName, Description);
-        }
+            if (FindObjectOfType<Manager>().Inventory.Contains(this))
+            {
+                ChangeUI(CircleColor, Image, AbilityName, Description);
+            }
 
-        if (FindObjectOfType<MenuScript>().currentAbility == this)
-        {
+            if (FindObjectOfType<MenuScript>().currentAbility == this)
+            {
 
+            }
         }
     }
 

@@ -11,6 +11,7 @@ public class ItemCauldron : MonoBehaviour
 
     bool IsBought = false;
 
+
     public void BuyPower()
     {
         if (!IsBought)
@@ -36,6 +37,7 @@ public class ItemCauldron : MonoBehaviour
                 }
                 FindObjectOfType<Manager>().AddInventory(Ability);
                 IsBought = true;
+                FindObjectOfType<SoundManager>().PlayBrewingSound();
             }
         }
 

@@ -31,61 +31,67 @@ public class FireComet : BaseAbility
 
     public override void Update()
     {
-
-        if (FindObjectOfType<Manager>().Inventory.Contains(this))
+        if (!FindObjectOfType<Manager>().PauseMenu.activeSelf)
         {
-            ChangeUI(CircleColor, Image, AbilityName, Description);
+            if (FindObjectOfType<Manager>().Inventory.Contains(this))
+            {
+                ChangeUI(CircleColor, Image, AbilityName, Description);
+            }
+
+            if (isCooldownActive)
+            {
+                currentCooldownTime -= Time.deltaTime;
+
+                if (currentCooldownTime <= 0)
+                {
+                    isCooldownActive = false;
+                    currentCooldownTime = 0;
+                    Debug.Log("Cooldown Finished");
+                }
+            }
+
+
+            if (FindObjectOfType<MenuScript>().currentAbility == this)
+            {
+                cooldownImage.fillAmount = currentCooldownTime / CooldownTime;
+                // mikken
+                if (Gamepad.current.leftTrigger.IsPressed() && !isCooldownActive)
+                {
+                    AimObject.SetActive(true);
+                    Time.timeScale = 0.1f;
+
+
+                    Vector3 direction = new Vector3(movementInput.x, 0f, movementInput.y);
+                    AimObject.transform.position += direction * 3 * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    AimObject.SetActive(false);
+                    AimObject.transform.position = FindObjectOfType<ThirdPersonController>().transform.position;
+                }
+
+
+                // schieten
+                if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive && Gamepad.current.leftTrigger.IsPressed())
+                {
+                    // spawn fireball
+                    GameObject fireball = Instantiate(FirePrefab, FindObjectOfType<ThirdPersonController>().transform.position + new Vector3(0, 10, 0), Quaternion.identity);
+                    int index = FindObjectOfType<csFogWar>().AddFogRevealer(new csFogWar.FogRevealer(fireball.transform, 3, true));
+                    fireball.GetComponent<Fireball>().Destination = AimObject.transform.position;
+                    fireball.GetComponent<Fireball>().IndexRevealer = index;
+
+                    FindObjectOfType<SoundManager>().PlayFireCometStartSound();
+
+                    AimObject.SetActive(false);
+                    AimObject.transform.position = FindObjectOfType<ThirdPersonController>().transform.position;
+                    ResetCooldown();
+                }
+
+
+            }
         }
 
-        if (isCooldownActive)
-        {
-            currentCooldownTime -= Time.deltaTime;
 
-            if (currentCooldownTime <= 0)
-            {
-                isCooldownActive = false;
-                currentCooldownTime = 0;
-                Debug.Log("Cooldown Finished");
-            }
-        }
-        
-
-        if (FindObjectOfType<MenuScript>().currentAbility == this)
-        {
-            cooldownImage.fillAmount = currentCooldownTime / CooldownTime;
-            // mikken
-            if (Gamepad.current.leftTrigger.IsPressed() && !isCooldownActive)
-            {
-                AimObject.SetActive(true);
-                Time.timeScale = 0.1f;
-
-
-                Vector3 direction = new Vector3(movementInput.x, 0f, movementInput.y);
-                AimObject.transform.position += direction * 3 * Time.fixedDeltaTime;
-            }
-            else
-            {
-                AimObject.SetActive(false);
-                AimObject.transform.position = FindObjectOfType<ThirdPersonController>().transform.position;
-            }
-
-
-            // schieten
-            if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive && Gamepad.current.leftTrigger.IsPressed())
-            {
-                // spawn fireball
-                GameObject fireball = Instantiate(FirePrefab, FindObjectOfType<ThirdPersonController>().transform.position + new Vector3(0, 10, 0), Quaternion.identity);
-                int index = FindObjectOfType<csFogWar>().AddFogRevealer(new csFogWar.FogRevealer(fireball.transform, 3, true));
-                fireball.GetComponent<Fireball>().Destination = AimObject.transform.position;
-                fireball.GetComponent<Fireball>().IndexRevealer = index;
-
-                AimObject.SetActive(false);
-                AimObject.transform.position = FindObjectOfType<ThirdPersonController>().transform.position;
-                ResetCooldown();
-            }
-
-
-        }
     }
 
     private void FixedUpdate()

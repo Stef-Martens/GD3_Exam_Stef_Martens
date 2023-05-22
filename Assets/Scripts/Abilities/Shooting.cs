@@ -22,28 +22,30 @@ public class Shooting : BaseAbility
 
     public override void Update()
     {
-        if (FindObjectOfType<MenuScript>().currentAbility == this)
+        if (!FindObjectOfType<Manager>().PauseMenu.activeSelf)
         {
-
-            if (Gamepad.current.leftTrigger.IsPressed())
+            if (FindObjectOfType<MenuScript>().currentAbility == this)
             {
-                lineRenderer.enabled = true;
-                lineRenderer.SetPosition(0, Player.transform.position + new Vector3(0, 1, 0)); // set the starting position of the line to the player's position
-                lineRenderer.SetPosition(1, Player.transform.position + new Vector3(0, 1, 0) + Player.transform.forward * 10); // set the ending position of the line to the player's position + forward direction
-            }
-            else
-            {
-                lineRenderer.enabled = false;
-            }
+                if (Gamepad.current.leftTrigger.IsPressed())
+                {
+                    lineRenderer.enabled = true;
+                    lineRenderer.SetPosition(0, Player.transform.position + new Vector3(0, 1, 0)); // set the starting position of the line to the player's position
+                    lineRenderer.SetPosition(1, Player.transform.position + new Vector3(0, 1, 0) + Player.transform.forward * 10); // set the ending position of the line to the player's position + forward direction
+                }
+                else
+                {
+                    lineRenderer.enabled = false;
+                }
 
 
-            if (Gamepad.current.rightTrigger.wasPressedThisFrame)
-            {
-                GameObject projectile = Instantiate(Bullet, Player.transform.position + new Vector3(0, 0.5f, 0) + Player.transform.forward, Player.transform.rotation);
-                Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
-                projectileRigidbody.velocity = Player.transform.forward * 20;
+                if (Gamepad.current.rightTrigger.wasPressedThisFrame)
+                {
+                    FindObjectOfType<SoundManager>().PlayShootSound();
+                    GameObject projectile = Instantiate(Bullet, Player.transform.position + new Vector3(0, 0.5f, 0) + Player.transform.forward, Player.transform.rotation);
+                    Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
+                    projectileRigidbody.velocity = Player.transform.forward * 20;
+                }
             }
-
         }
 
     }

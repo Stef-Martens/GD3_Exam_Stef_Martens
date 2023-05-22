@@ -26,46 +26,50 @@ public class Freeze : BaseAbility
 
     public override void Update()
     {
-
-
-        if (FindObjectOfType<Manager>().Inventory.Contains(this))
+        if (!FindObjectOfType<Manager>().PauseMenu.activeSelf)
         {
-            ChangeUI(CircleColor, Image, AbilityName, Description);
-        }
-
-        if (isCooldownActive)
-        {
-            currentCooldownTime -= Time.deltaTime;
-
-            if (currentCooldownTime <= 0)
+            if (FindObjectOfType<Manager>().Inventory.Contains(this))
             {
-                isCooldownActive = false;
-                currentCooldownTime = 0;
-                Debug.Log("Cooldown Finished");
+                ChangeUI(CircleColor, Image, AbilityName, Description);
             }
-        }
 
-        if (FindObjectOfType<MenuScript>().currentAbility == this)
-        {
-            cooldownImage.fillAmount = currentCooldownTime / CooldownTime;
-            if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive)
+            if (isCooldownActive)
             {
-                Collider[] hitColliders = Physics.OverlapSphere(FindObjectOfType<ThirdPersonController>().transform.position, radius);
+                currentCooldownTime -= Time.deltaTime;
 
-                foreach (Collider col in hitColliders)
+                if (currentCooldownTime <= 0)
                 {
+                    isCooldownActive = false;
+                    currentCooldownTime = 0;
+                    Debug.Log("Cooldown Finished");
+                }
+            }
 
-                    if (col.GetComponent<BaseEnemy>())
+            if (FindObjectOfType<MenuScript>().currentAbility == this)
+            {
+                cooldownImage.fillAmount = currentCooldownTime / CooldownTime;
+                if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive)
+                {
+                    Collider[] hitColliders = Physics.OverlapSphere(FindObjectOfType<ThirdPersonController>().transform.position, radius);
+
+                    foreach (Collider col in hitColliders)
                     {
-                        col.GetComponent<BaseEnemy>().Frozen = true;
-                        StartCoroutine(UnfreezeEnemiesAfterDelay(col.GetComponent<BaseEnemy>()));
+
+                        if (col.GetComponent<BaseEnemy>())
+                        {
+                            col.GetComponent<BaseEnemy>().Frozen = true;
+                            StartCoroutine(UnfreezeEnemiesAfterDelay(col.GetComponent<BaseEnemy>()));
+                        }
+
                     }
+                    FindObjectOfType<SoundManager>().PlayFreezeSound();
+                    ResetCooldown();
 
                 }
-                ResetCooldown();
-
             }
         }
+
+
     }
 
     void ResetCooldown()

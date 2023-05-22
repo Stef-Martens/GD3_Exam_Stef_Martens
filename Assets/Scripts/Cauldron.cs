@@ -24,6 +24,7 @@ public class Cauldron : MonoBehaviour
     public Text Ingredients;
     public Text InformationText;
 
+
     void Start()
     {
         system = EventSystem.current;
@@ -31,7 +32,7 @@ public class Cauldron : MonoBehaviour
 
     void Update()
     {
-        if (canOpen && Gamepad.current.xButton.wasPressedThisFrame)
+        if (canOpen && Gamepad.current.xButton.wasPressedThisFrame && !FindObjectOfType<Manager>().PauseMenu.activeSelf)
         {
             MenuIsOpen = true;
             MenuUI.SetActive(true);
@@ -45,17 +46,21 @@ public class Cauldron : MonoBehaviour
             ControlsText.text = "Press X to open brewing menu.";
         }
 
-        CurrentImage.sprite = system.currentSelectedGameObject.gameObject.transform.GetChild(0).GetComponent<Image>().sprite;
-        CurrentAbility.text = system.currentSelectedGameObject.gameObject.name;
-        Ingredients.text = "";
-        foreach (var item in system.currentSelectedGameObject.GetComponent<ItemCauldron>().IngredientsNames)
+        if (MenuIsOpen)
         {
-            if (FindObjectOfType<Manager>().Ingredients.Contains(item))
-                Ingredients.text = Ingredients.text + Environment.NewLine + "<color=green>" + item + "</color>";
-            else
-                Ingredients.text = Ingredients.text + Environment.NewLine + "<color=red>" + item + "</color>";
+            CurrentImage.sprite = system.currentSelectedGameObject.gameObject.transform.GetChild(0).GetComponent<Image>().sprite;
+            CurrentAbility.text = system.currentSelectedGameObject.gameObject.name;
+            Ingredients.text = "";
+            foreach (var item in system.currentSelectedGameObject.GetComponent<ItemCauldron>().IngredientsNames)
+            {
+                if (FindObjectOfType<Manager>().Ingredients.Contains(item))
+                    Ingredients.text = Ingredients.text + Environment.NewLine + "<color=green>" + item + "</color>";
+                else
+                    Ingredients.text = Ingredients.text + Environment.NewLine + "<color=red>" + item + "</color>";
+            }
+            InformationText.text = system.currentSelectedGameObject.GetComponent<ItemCauldron>().Info;
         }
-        InformationText.text = system.currentSelectedGameObject.GetComponent<ItemCauldron>().Info;
+
 
 
     }

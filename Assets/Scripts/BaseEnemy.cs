@@ -14,6 +14,10 @@ public class BaseEnemy : MonoBehaviour
 
     public bool Frozen = false;
 
+    private float timer;
+
+    public bool hit = false;
+
     protected virtual void Start()
     {
         currentHealth = maxHealth;
@@ -25,6 +29,25 @@ public class BaseEnemy : MonoBehaviour
     {
         if (!Frozen)
         {
+
+            if (hit)
+            {
+                timer -= Time.deltaTime;
+
+                // Check if the countdown has reached 0
+                if (timer <= 0f)
+                {
+                    hit = false;
+                }
+
+                isAttacking = true;
+            }
+
+
+
+
+
+
             if (!isAttacking)
             {
                 MoveToStartPosition();
@@ -34,6 +57,7 @@ public class BaseEnemy : MonoBehaviour
                 Attack();
             }
         }
+
 
     }
 
@@ -75,5 +99,11 @@ public class BaseEnemy : MonoBehaviour
     protected virtual void Die()
     {
         Destroy(gameObject);
+    }
+
+    public void StartAttack()
+    {
+        hit = true;
+        timer = 5;
     }
 }

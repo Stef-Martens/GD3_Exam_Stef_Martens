@@ -18,7 +18,11 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<BaseEnemy>())
-            collision.gameObject.GetComponent<BaseEnemy>().TakeDamage(10);
+        {
+            collision.gameObject.GetComponent<BaseEnemy>().TakeDamage(20);
+            collision.gameObject.GetComponent<BaseEnemy>().StartAttack();
+        }
+
 
         DeleteBullet();
     }

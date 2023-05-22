@@ -20,6 +20,7 @@ public class Necromancer : BaseEnemy
             // Check if 2 seconds have elapsed since the last attack
             if (Time.time - lastAttackTime >= SpawnInterval)
             {
+                GetComponent<AudioSource>().Play();
                 SpawnSkeletons();
                 // Update the last attack time
                 lastAttackTime = Time.time;

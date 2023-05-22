@@ -18,6 +18,7 @@ public class Ingredient : MonoBehaviour
                 FindObjectOfType<Manager>().Ingredients.Add(item);
                 FindObjectOfType<Cauldron>().ControlsText.text = "";
             }
+            FindObjectOfType<SoundManager>().PlayPickupSound();
             Destroy(gameObject);
         }
     }

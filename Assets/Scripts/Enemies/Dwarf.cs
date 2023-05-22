@@ -25,6 +25,7 @@ public class Dwarf : BaseEnemy
 
                 // Update the last attack time
                 lastAttackTime = Time.time;
+                GetComponent<AudioSource>().Play();
             }
         }
         else
@@ -36,4 +37,6 @@ public class Dwarf : BaseEnemy
 
 
     }
+
+
 }

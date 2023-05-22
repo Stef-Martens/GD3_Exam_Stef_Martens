@@ -24,53 +24,56 @@ public class Shockwave : BaseAbility
 
     public override void Update()
     {
-        if (FindObjectOfType<Manager>().Inventory.Contains(this))
+        if (!FindObjectOfType<Manager>().PauseMenu.activeSelf)
         {
-            ChangeUI(CircleColor, Image, AbilityName, Description);
-        }
-
-        if (isCooldownActive)
-        {
-            currentCooldownTime -= Time.deltaTime;
-
-            if (currentCooldownTime <= 0)
+            if (FindObjectOfType<Manager>().Inventory.Contains(this))
             {
-                isCooldownActive = false;
-                currentCooldownTime = 0;
+                ChangeUI(CircleColor, Image, AbilityName, Description);
             }
-        }
 
-        if (FindObjectOfType<MenuScript>().currentAbility == this)
-        {
-
-            if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive)
+            if (isCooldownActive)
             {
-                Collider[] hitColliders = Physics.OverlapSphere(FindObjectOfType<ThirdPersonController>().transform.position, radius);
+                currentCooldownTime -= Time.deltaTime;
 
-                foreach (Collider col in hitColliders)
+                if (currentCooldownTime <= 0)
                 {
+                    isCooldownActive = false;
+                    currentCooldownTime = 0;
+                }
+            }
 
-                    if (col.GetComponent<BaseEnemy>())
+            if (FindObjectOfType<MenuScript>().currentAbility == this)
+            {
+
+                if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive)
+                {
+                    Collider[] hitColliders = Physics.OverlapSphere(FindObjectOfType<ThirdPersonController>().transform.position, radius);
+
+                    foreach (Collider col in hitColliders)
                     {
-                        Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
 
-                        if (rb != null)
+                        if (col.GetComponent<BaseEnemy>())
                         {
-                            Vector3 direction = rb.transform.position - FindObjectOfType<ThirdPersonController>().transform.position;
-                            float distance = direction.magnitude;
+                            Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
 
-                            float falloff = 1 - Mathf.Clamp01(distance / radius);
-                            Vector3 forceVector = direction.normalized * force * falloff;
+                            if (rb != null)
+                            {
+                                Vector3 direction = rb.transform.position - FindObjectOfType<ThirdPersonController>().transform.position;
+                                float distance = direction.magnitude;
 
-                            rb.AddForce(forceVector, ForceMode.Impulse);
+                                float falloff = 1 - Mathf.Clamp01(distance / radius);
+                                Vector3 forceVector = direction.normalized * force * falloff;
+
+                                rb.AddForce(forceVector, ForceMode.Impulse);
+                            }
                         }
+
                     }
+                    FindObjectOfType<SoundManager>().PlayShockwaveSound();
+                    ResetCooldown();
 
                 }
-                ResetCooldown();
-
             }
-
         }
 
     }

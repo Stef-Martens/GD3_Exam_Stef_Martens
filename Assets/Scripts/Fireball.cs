@@ -52,6 +52,7 @@ public class Fireball : MonoBehaviour
         }
 
         FindObjectOfType<csFogWar>().RemoveFogRevealer(IndexRevealer);
+        FindObjectOfType<SoundManager>().PlayFireCometEndSound();
         Destroy(gameObject);
     }
 }
