@@ -18,6 +18,12 @@ public class BaseEnemy : MonoBehaviour
 
     public bool hit = false;
 
+    public bool Takeover = false;
+
+    private GameObject TakeoverEnemy;
+
+    public GameObject SelectedObject;
+
     protected virtual void Start()
     {
         currentHealth = maxHealth;
@@ -43,19 +49,29 @@ public class BaseEnemy : MonoBehaviour
                 isAttacking = true;
             }
 
-
-
-
-
-
-            if (!isAttacking)
+            if (Takeover)
             {
-                MoveToStartPosition();
+                if (!TakeoverEnemy)
+                    AttackTakeover(FindClosestObject("Enemy"));
+                else
+                    AttackTakeover(TakeoverEnemy);
             }
             else
             {
-                Attack();
+                if (!isAttacking)
+                {
+                    MoveToStartPosition();
+                }
+                else
+                {
+                    Attack();
+                }
             }
+
+
+
+
+
         }
 
 
@@ -79,13 +95,24 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void MoveToStartPosition()
     {
-        transform.position = Vector3.MoveTowards(transform.position, startPosition, moveSpeed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, startPosition) > 1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, startPosition, moveSpeed * Time.deltaTime);
+            if (GetComponent<Animator>()) GetComponent<Animator>().Play("Walk");
+        }
+
     }
 
     protected virtual void Attack()
     {
         // implement attack logic for specific enemy types
     }
+
+    protected virtual void AttackTakeover(GameObject enemy)
+    {
+        // implement attack logic for specific enemy types
+    }
+
 
     public virtual void TakeDamage(int damage)
     {
@@ -105,5 +132,52 @@ public class BaseEnemy : MonoBehaviour
     {
         hit = true;
         timer = 5;
+    }
+
+    public void DeselectTakover()
+    {
+        SelectedObject.SetActive(false);
+    }
+
+    public void SelectTakover()
+    {
+        SelectedObject.SetActive(true);
+    }
+
+    private GameObject FindClosestObject(string tag)
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
+        GameObject closestObject = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (GameObject obj in objects)
+        {
+            float distance = Vector3.Distance(gameObject.transform.position, obj.transform.position);
+
+            if (distance < closestDistance && obj != gameObject)
+            {
+                closestObject = obj;
+                closestDistance = distance;
+            }
+        }
+
+        return closestObject;
+    }
+
+    public GameObject CheckObjectInCircle()
+    {
+        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, 4);
+
+        foreach (Collider collider in colliders)
+        {
+            // Check if the collider has a component with the desired boolean value
+            BaseEnemy enemy = collider.GetComponent<BaseEnemy>();
+            if (enemy != null && enemy.Takeover)
+            {
+                return enemy.gameObject; // Found an object with the desired boolean value
+            }
+        }
+
+        return null; // No object with the desired boolean value found
     }
 }

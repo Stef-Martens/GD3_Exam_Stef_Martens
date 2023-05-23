@@ -15,6 +15,7 @@ public class Necromancer : BaseEnemy
 
     protected override void Attack()
     {
+        transform.LookAt(playerTransform);
         if (Vector3.Distance(transform.position, playerTransform.position) <= attackRange)
         {
             // Check if 2 seconds have elapsed since the last attack
@@ -29,6 +30,7 @@ public class Necromancer : BaseEnemy
         else
         {
             // Move towards the player
+            GetComponent<Animator>().Play("Walk");
             Vector3 direction = (playerTransform.position - transform.position).normalized;
             transform.position += direction * moveSpeed * Time.deltaTime;
         }
@@ -41,7 +43,7 @@ public class Necromancer : BaseEnemy
             Vector2 randomPos = Random.insideUnitCircle * 3;
             Vector3 spawnPos = new Vector3(randomPos.x, 0.5f, randomPos.y) + transform.position;
             GameObject skelet = Instantiate(SkeletonsPrefab, spawnPos, Quaternion.identity);
-            skelet.transform.parent = gameObject.transform;
+            //skelet.transform.parent = gameObject.transform;
         }
     }
 }

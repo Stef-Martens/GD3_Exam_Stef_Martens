@@ -57,7 +57,6 @@ public class MenuScript : MonoBehaviour
                 inputs.lookNotNull = inputs.look;
             }
 
-
             if (joystickValue.magnitude > 0.7f)
             {
                 var test = new Vector2(Screen.currentResolution.width / 2, Screen.currentResolution.height / 2) + inputs.lookNotNull / 2;
@@ -81,24 +80,10 @@ public class MenuScript : MonoBehaviour
                 }
             }
 
-            else
-            {
-                foreach (Transform item in transform)
-                {
-                    item.gameObject.GetComponent<WheelMenuItem>().Deselect();
-                }
-            }
 
         }
         else
         {
-            foreach (Transform item in transform)
-            {
-                foreach (Transform objectje in item.transform)
-                {
-                    objectje.gameObject.SetActive(false);
-                }
-            }
 
             foreach (GameObject item in menuItems)
             {
@@ -108,8 +93,23 @@ public class MenuScript : MonoBehaviour
                     item.GetComponent<WheelMenuItem>().Deselect();
                 }
             }
+
+            
+            foreach (Transform item in transform)
+            {
+
+                item.gameObject.GetComponent<WheelMenuItem>().Deselect();
+
+                foreach (Transform objectje in item.transform)
+                {
+                    objectje.gameObject.SetActive(false);
+                }
+            }
+
+            
         }
 
     }
 
 }
+

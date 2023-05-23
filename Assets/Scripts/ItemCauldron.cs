@@ -11,26 +11,23 @@ public class ItemCauldron : MonoBehaviour
 
     bool IsBought = false;
 
+    int counter = 0;
+
 
     public void BuyPower()
     {
+        counter = 0;
         if (!IsBought)
         {
-            bool canBuy = false;
             foreach (var item in IngredientsNames)
             {
                 if (FindObjectOfType<Manager>().Ingredients.Contains(item))
-                    canBuy = true;
-                else
-                {
-                    canBuy = false;
-                    break;
-                }
-
+                    counter++;
             }
 
-            if (canBuy)
+            if (counter == IngredientsNames.Length)
             {
+
                 foreach (var item in IngredientsNames)
                 {
                     FindObjectOfType<Manager>().Ingredients.Remove(item);

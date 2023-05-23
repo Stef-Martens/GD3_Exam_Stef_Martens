@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Shockwave : BaseAbility
 {
@@ -20,6 +21,8 @@ public class Shockwave : BaseAbility
 
     private bool isCooldownActive = false;
     private float currentCooldownTime = 0f;
+
+    public Image cooldownImage;
 
 
     public override void Update()
@@ -44,7 +47,7 @@ public class Shockwave : BaseAbility
 
             if (FindObjectOfType<MenuScript>().currentAbility == this)
             {
-
+                cooldownImage.fillAmount = currentCooldownTime / CooldownTime;
                 if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive)
                 {
                     Collider[] hitColliders = Physics.OverlapSphere(FindObjectOfType<ThirdPersonController>().transform.position, radius);

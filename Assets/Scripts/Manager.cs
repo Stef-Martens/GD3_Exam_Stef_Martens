@@ -47,6 +47,11 @@ public class Manager : MonoBehaviour
         Inventory.Add(FindObjectOfType<Shockwave>());
         Inventory.Add(FindObjectOfType<Necromance>());
         Inventory.Add(FindObjectOfType<FireComet>());*/
+
+        Inventory.Add(FindObjectOfType<EnemyTakeover>());
+
+
+
         cauldron = FindObjectOfType<Cauldron>();
         map = FindObjectOfType<Map>();
         SoundEffects = new List<AudioSource>();
@@ -93,7 +98,8 @@ public class Manager : MonoBehaviour
 
         foreach (var source in SoundEffects)
         {
-            source.volume = slider.value;
+            if (source)
+                source.volume = slider.value;
         }
     }
 
@@ -126,7 +132,7 @@ public class Manager : MonoBehaviour
         {
             ClosePause();
         }
-        else if (!GameOver.activeSelf && !PauseMenu.activeSelf)
+        else if (!GameOver.activeSelf && !PauseMenu.activeSelf && !(FindObjectOfType<MenuScript>().currentAbility == FindObjectOfType<EnemyTakeover>() && Gamepad.current.leftTrigger.isPressed))
         {
             Time.timeScale = 1f;
         }
@@ -196,6 +202,7 @@ public class Manager : MonoBehaviour
         // Ensure the text is visible after blinking
         BaseAttackedText.enabled = false;
     }
+
 
     private IEnumerator IncreaseDays()
     {

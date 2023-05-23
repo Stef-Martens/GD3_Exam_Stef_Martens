@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource ShockwaveSound;
     public AudioSource BrewingSound;
     public AudioSource PickupSound;
+    public AudioSource TakeoverSound;
 
     public void PlayShootSound()
     {
@@ -41,6 +42,10 @@ public class SoundManager : MonoBehaviour
     public void PlayPickupSound()
     {
         PickupSound.Play();
+    }
+    public void PlayTakeoverSound()
+    {
+        TakeoverSound.Play();
     }
 
 

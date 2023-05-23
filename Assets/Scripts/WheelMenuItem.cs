@@ -17,7 +17,7 @@ public class WheelMenuItem : MonoBehaviour
         if (GetComponent<Shooting>())
             FindObjectOfType<MenuScript>().currentAbility = GetComponent<Shooting>();
 
-
+        Deselect();
         background.color = baseColor;
         description.SetActive(false);
         title.SetActive(false);
