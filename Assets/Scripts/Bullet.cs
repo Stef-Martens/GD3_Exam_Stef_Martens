@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float rotationSpeed = 10f;
     // Start is called before the first frame update
     void Start()
     {
         Invoke("DeleteBullet", 2f);
+    }
+
+    void Update()
+    {
+        transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
     }
 
     void DeleteBullet()

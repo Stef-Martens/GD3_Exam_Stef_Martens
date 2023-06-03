@@ -51,6 +51,7 @@ public class Manager : MonoBehaviour
         Inventory.Add(FindObjectOfType<EnemyTakeover>());
         Inventory.Add(FindObjectOfType<Necromance>());*/
 
+        Inventory.Add(FindObjectOfType<FireComet>());
 
 
 
@@ -120,7 +121,7 @@ public class Manager : MonoBehaviour
 
         HealthText.text = Health.ToString();
 
-        if (Gamepad.current.leftShoulder.IsPressed() && !cauldron.MenuIsOpen && !map.IsOpen && !PauseMenu.activeSelf)
+        if (Gamepad.current.leftShoulder.IsPressed() && !cauldron.MenuIsOpen && !map.IsOpen && !PauseMenu.activeSelf && !InstructionActive)
         {
             Time.timeScale = 0.05f;
         }

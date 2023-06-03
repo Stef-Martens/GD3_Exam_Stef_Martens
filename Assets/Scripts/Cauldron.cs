@@ -32,7 +32,7 @@ public class Cauldron : MonoBehaviour
 
     void Update()
     {
-        if (canOpen && Gamepad.current.xButton.wasPressedThisFrame && !FindObjectOfType<Manager>().PauseMenu.activeSelf)
+        if (canOpen && Gamepad.current.xButton.wasPressedThisFrame && !FindObjectOfType<Manager>().PauseMenu.activeSelf && !FindObjectOfType<Manager>().InstructionActive)
         {
             MenuIsOpen = true;
             MenuUI.SetActive(true);
