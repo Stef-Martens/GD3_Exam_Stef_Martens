@@ -51,10 +51,16 @@ public class BaseEnemy : MonoBehaviour
 
             if (Takeover)
             {
-                if (!TakeoverEnemy)
-                    AttackTakeover(FindClosestObject("Enemy"));
+                if (FindClosestObject("Enemy"))
+                {
+                    if (!TakeoverEnemy)
+                        AttackTakeover(FindClosestObject("Enemy"));
+                }
                 else
-                    AttackTakeover(TakeoverEnemy);
+                {
+                    AttackTakeover(null);
+                }
+
             }
             else
             {
@@ -154,12 +160,15 @@ public class BaseEnemy : MonoBehaviour
         {
             float distance = Vector3.Distance(gameObject.transform.position, obj.transform.position);
 
-            if (distance < closestDistance && obj != gameObject)
+            if (distance < closestDistance && obj != gameObject && !obj.GetComponent<BaseEnemy>().Takeover)
             {
                 closestObject = obj;
                 closestDistance = distance;
             }
         }
+
+        if (closestObject.GetComponent<BaseEnemy>().Takeover)
+            closestObject = null;
 
         return closestObject;
     }

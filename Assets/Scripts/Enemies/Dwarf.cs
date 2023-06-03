@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
 
 public class Dwarf : BaseEnemy
@@ -31,7 +32,14 @@ public class Dwarf : BaseEnemy
         }
         else
         {
-            transform.LookAt(playerTransform);
+            //transform.LookAt(playerTransform);
+
+            Vector3 direction = (playerTransform.position - transform.position).normalized;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            targetRotation.x = 0;
+            targetRotation.z = 0;
+            transform.rotation = targetRotation;
+
 
             if (Vector3.Distance(transform.position, playerTransform.position) <= attackRange)
             {
@@ -50,8 +58,8 @@ public class Dwarf : BaseEnemy
             {
                 animator.Play("Walk");
                 // Move towards the player
-                Vector3 direction = (playerTransform.position - transform.position).normalized;
-                transform.position += direction * moveSpeed * Time.deltaTime;
+                Vector3 directionWalk = (playerTransform.position - transform.position).normalized;
+                transform.position += directionWalk * moveSpeed * Time.deltaTime;
             }
         }
 
@@ -60,29 +68,54 @@ public class Dwarf : BaseEnemy
     }
     protected override void AttackTakeover(GameObject enemy)
     {
-        //base.AttackTakeover(enemy);
-
-        transform.LookAt(enemy.transform);
-        if (Vector3.Distance(transform.position, enemy.transform.position) <= attackRange)
+        if (enemy == null)
         {
-            // Check if 2 seconds have elapsed since the last attack
-            if (Time.time - lastAttackTime >= 2f)
+            if (FindObjectOfType<StarterAssetsInputs>().move != Vector2.zero)
             {
-                enemy.GetComponent<BaseEnemy>().TakeDamage((int)DamageDone);
-
-                // Update the last attack time
-                lastAttackTime = Time.time;
-                GetComponent<AudioSource>().Play();
-                animator.Play("Lumbering");
+                transform.position += FindObjectOfType<ThirdPersonController>().directionWalk;
+                animator.Play("Walk");
             }
+
         }
         else
         {
-            animator.Play("Walk");
-            // Move towards the player
+            //base.AttackTakeover(enemy);
+
+            //transform.LookAt(enemy.transform);
+
             Vector3 direction = (enemy.transform.position - transform.position).normalized;
-            transform.position += direction * moveSpeed * Time.deltaTime;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            targetRotation.x = 0;
+            targetRotation.z = 0;
+            transform.rotation = targetRotation;
+
+
+            if (Vector3.Distance(transform.position, enemy.transform.position) <= attackRange)
+            {
+                // Check if 2 seconds have elapsed since the last attack
+                if (Time.time - lastAttackTime >= 2f)
+                {
+                    enemy.GetComponent<BaseEnemy>().TakeDamage((int)DamageDone);
+
+                    // Update the last attack time
+                    lastAttackTime = Time.time;
+                    GetComponent<AudioSource>().Play();
+                    animator.Play("Lumbering");
+                }
+            }
+            else
+            {
+                animator.Play("Walk");
+                // Move towards the player
+                Vector3 directionWalk = (enemy.transform.position - transform.position).normalized;
+                transform.position += directionWalk * moveSpeed * Time.deltaTime;
+            }
         }
+
+
+
+
+
     }
 
 

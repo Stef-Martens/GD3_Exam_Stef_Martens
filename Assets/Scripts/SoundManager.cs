@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource BrewingSound;
     public AudioSource PickupSound;
     public AudioSource TakeoverSound;
+    public AudioSource NecromanceSound;
 
     public void PlayShootSound()
     {
@@ -46,6 +47,11 @@ public class SoundManager : MonoBehaviour
     public void PlayTakeoverSound()
     {
         TakeoverSound.Play();
+    }
+
+    public void PlayNecromanceSound()
+    {
+        NecromanceSound.Play();
     }
 
 

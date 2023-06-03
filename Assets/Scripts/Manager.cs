@@ -45,10 +45,10 @@ public class Manager : MonoBehaviour
         Inventory.Add(FindObjectOfType<Shooting>());
         /*Inventory.Add(FindObjectOfType<Freeze>());
         Inventory.Add(FindObjectOfType<Shockwave>());
-        Inventory.Add(FindObjectOfType<Necromance>());
         Inventory.Add(FindObjectOfType<FireComet>());*/
 
         Inventory.Add(FindObjectOfType<EnemyTakeover>());
+        Inventory.Add(FindObjectOfType<Necromance>());
 
 
 

@@ -27,3 +27,4 @@ public class Bullet : MonoBehaviour
         DeleteBullet();
     }
 }
+

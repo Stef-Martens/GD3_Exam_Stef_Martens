@@ -114,6 +114,8 @@ namespace StarterAssets
 
         public MapIcon MapIcon;
 
+        public Vector3 directionWalk;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -280,6 +282,9 @@ namespace StarterAssets
 
             /*MapIcon.Move(targetDirection.normalized * (_speed / 15 * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);*/
+
+            directionWalk = targetDirection.normalized * (_speed * Time.deltaTime) +
+                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime;
 
             // update animator if using character
             if (_hasAnimator)
