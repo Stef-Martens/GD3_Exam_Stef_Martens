@@ -16,13 +16,15 @@ public class Shockwave : BaseAbility
         get { return 3; }
     }
 
-    public float force = 10f;
+    public float force = 50f;
     public float radius = 10f;
 
     private bool isCooldownActive = false;
     private float currentCooldownTime = 0f;
 
     public Image cooldownImage;
+
+    public GameObject ShockwaveParticles;
 
 
     public override void Update()
@@ -50,6 +52,9 @@ public class Shockwave : BaseAbility
                 cooldownImage.fillAmount = currentCooldownTime / CooldownTime;
                 if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive)
                 {
+                    GameObject particles = Instantiate(ShockwaveParticles, FindObjectOfType<ThirdPersonController>().transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                    particles.transform.parent = FindObjectOfType<ThirdPersonController>().transform;
+
                     Collider[] hitColliders = Physics.OverlapSphere(FindObjectOfType<ThirdPersonController>().transform.position, radius);
 
                     foreach (Collider col in hitColliders)
@@ -59,15 +64,17 @@ public class Shockwave : BaseAbility
                         {
                             Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
 
+
                             if (rb != null)
                             {
-                                Vector3 direction = rb.transform.position - FindObjectOfType<ThirdPersonController>().transform.position;
+                                Vector3 direction = rb.transform.position - FindObjectOfType<ThirdPersonController>().transform.position - new Vector3(0, 1, 0);
                                 float distance = direction.magnitude;
 
                                 float falloff = 1 - Mathf.Clamp01(distance / radius);
                                 Vector3 forceVector = direction.normalized * force * falloff;
 
                                 rb.AddForce(forceVector, ForceMode.Impulse);
+
                             }
                         }
 

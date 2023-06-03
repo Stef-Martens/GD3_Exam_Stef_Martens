@@ -10,6 +10,7 @@ public class Fireball : MonoBehaviour
     private int radius = 8;
     private int force = 100;
     public int IndexRevealer;
+    public GameObject FireParticle;
 
     void Update()
     {
@@ -53,6 +54,7 @@ public class Fireball : MonoBehaviour
 
         FindObjectOfType<csFogWar>().RemoveFogRevealer(IndexRevealer);
         FindObjectOfType<SoundManager>().PlayFireCometEndSound();
+        Instantiate(FireParticle, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         Destroy(gameObject);
     }
 }

@@ -4951,6 +4951,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Destination: {x: 0, y: 0, z: 0}
   IndexRevealer: 0
+  FireParticle: {fileID: 7609123522019291767, guid: 6a84387fa623e0048803886a3ca3f3af,
+    type: 3}
 --- !u!1 &8978062662193319536
 GameObject:
   m_ObjectHideFlags: 0

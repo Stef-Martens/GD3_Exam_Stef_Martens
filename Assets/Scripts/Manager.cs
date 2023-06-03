@@ -51,7 +51,7 @@ public class Manager : MonoBehaviour
         Inventory.Add(FindObjectOfType<EnemyTakeover>());
         Inventory.Add(FindObjectOfType<Necromance>());*/
 
-        Inventory.Add(FindObjectOfType<FireComet>());
+        Inventory.Add(FindObjectOfType<EnemyTakeover>());
 
 
 

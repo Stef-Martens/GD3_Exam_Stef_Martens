@@ -27,6 +27,9 @@ public class EnemyTakeover : BaseAbility
 
     bool WasAlreadyPressed = false;
 
+    public GameObject EnemyTakeoverParticles;
+    GameObject particlesSpawned;
+
     public override void Start()
     {
         //base.Start();
@@ -129,10 +132,13 @@ public class EnemyTakeover : BaseAbility
                 }
 
 
-                if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive && Gamepad.current.leftTrigger.IsPressed())
+                if (Gamepad.current.rightTrigger.wasPressedThisFrame && !isCooldownActive && Gamepad.current.leftTrigger.IsPressed() && enemies.Count != 0)
                 {
                     ////// enemy takeover
                     enemies[currentEnemyIndex].GetComponent<BaseEnemy>().Takeover = true;
+                    /*particlesSpawned = Instantiate(EnemyTakeoverParticles, enemies[currentEnemyIndex].transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                    particlesSpawned.transform.parent = enemies[currentEnemyIndex].transform;
+                    Invoke("DeleteParticles", 1f);*/
                     FindObjectOfType<SoundManager>().PlayTakeoverSound();
                     ResetCooldown();
                 }
@@ -140,6 +146,11 @@ public class EnemyTakeover : BaseAbility
 
             }
         }
+    }
+
+    void DeleteParticles()
+    {
+        Destroy(particlesSpawned);
     }
 
 
