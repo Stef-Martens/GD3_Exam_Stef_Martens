@@ -41,9 +41,7 @@ public class Cauldron : MonoBehaviour
         }
         if (MenuIsOpen && Gamepad.current.bButton.wasPressedThisFrame)
         {
-            MenuIsOpen = false;
-            MenuUI.SetActive(false);
-            ControlsText.text = "Press X to open brewing menu.";
+            CloseMenu();
         }
 
         if (MenuIsOpen)
@@ -63,6 +61,13 @@ public class Cauldron : MonoBehaviour
 
 
 
+    }
+
+    public void CloseMenu()
+    {
+        MenuIsOpen = false;
+        MenuUI.SetActive(false);
+        ControlsText.text = "Press X to open brewing menu.";
     }
 
 

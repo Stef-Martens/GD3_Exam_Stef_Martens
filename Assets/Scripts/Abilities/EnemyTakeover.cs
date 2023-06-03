@@ -29,7 +29,7 @@ public class EnemyTakeover : BaseAbility
 
     public override void Start()
     {
-        base.Start();
+        //base.Start();
         enemies = new List<GameObject>();
     }
 

@@ -39,16 +39,18 @@ public class Manager : MonoBehaviour
 
     public Text BaseAttackedText;
 
+    public bool InstructionActive = false;
+
     void Start()
     {
         Inventory = new List<BaseAbility>();
         Inventory.Add(FindObjectOfType<Shooting>());
         /*Inventory.Add(FindObjectOfType<Freeze>());
         Inventory.Add(FindObjectOfType<Shockwave>());
-        Inventory.Add(FindObjectOfType<FireComet>());*/
-
+        Inventory.Add(FindObjectOfType<FireComet>());
         Inventory.Add(FindObjectOfType<EnemyTakeover>());
-        Inventory.Add(FindObjectOfType<Necromance>());
+        Inventory.Add(FindObjectOfType<Necromance>());*/
+
 
 
 
@@ -66,6 +68,8 @@ public class Manager : MonoBehaviour
         StartCoroutine(IncreaseDays());
 
         EnemieAtCauldron = new List<GameObject>();
+
+        FindObjectOfType<Instructions>().OpenBaseInstructions();
     }
 
     public void StartGameOver(string reason)
@@ -120,6 +124,10 @@ public class Manager : MonoBehaviour
         {
             Time.timeScale = 0.05f;
         }
+        else if (InstructionActive)
+        {
+            Time.timeScale = 0.001f;
+        }
         else if (cauldron.MenuIsOpen && !GameOver.activeSelf && !PauseMenu.activeSelf)
         {
             Time.timeScale = 0f;
@@ -156,7 +164,7 @@ public class Manager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 
     public void StartAttack()

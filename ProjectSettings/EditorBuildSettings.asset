@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Playground.unity
     guid: e9017d5f96b9f09489b4b37e1d6eb914
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 0992851e6da01bb4a8d0d3fc94f7fe97
+  - enabled: 1
     path: Assets/Scenes/Exam.unity
     guid: 1b6f4d1e4e7b3b84ab3f257c88aaeca9
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: ffcc4d8ddd533c243a4d1f6b278a12c5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}

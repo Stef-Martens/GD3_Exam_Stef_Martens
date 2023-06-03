@@ -17,8 +17,8 @@ public class Necromancer : BaseEnemy
     {
         Vector3 direction = (playerTransform.position - transform.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(direction);
-        direction.x = 0;
-        direction.z = 0;
+        targetRotation.x = 0;
+        targetRotation.z = 0;
         transform.rotation = targetRotation;
 
 
