@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7374547789910902535}
   - component: {fileID: 2324478191622334777}
   m_Layer: 0
-  m_Name: sm_tent
+  m_Name: Tent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
