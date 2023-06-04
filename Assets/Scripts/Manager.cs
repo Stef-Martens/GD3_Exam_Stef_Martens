@@ -111,6 +111,10 @@ public class Manager : MonoBehaviour
 
     void Update()
     {
+
+        if (FindObjectsOfType<BaseEnemy>().Length == 0)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
         if (Health <= 0 && !GameOver.activeSelf)
         {
             StartGameOver("You died!");
@@ -171,22 +175,22 @@ public class Manager : MonoBehaviour
     public void StartAttack()
     {
         // Calculate the angle between each object
-        float angleStep = 360f / 8;
+        float angleStep = 360f / 5;
 
         int enemiesCount = 0;
 
         // Spawn objects in a circle
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 5; i++)
         {
             // Calculate the position around the circle
             float angle = i * angleStep;
             Vector3 spawnPosition = cauldron.transform.position + Quaternion.Euler(0f, angle, 0f) * Vector3.forward * 4;
 
 
-            if (enemiesCount <= 4)
+            if (enemiesCount <= 3)
                 EnemieAtCauldron.Add(Instantiate(EnemiesPrefabs[0], spawnPosition, transform.rotation));
 
-            else if (enemiesCount <= 7)
+            else if (enemiesCount <= 5)
                 EnemieAtCauldron.Add(Instantiate(EnemiesPrefabs[1], spawnPosition, transform.rotation));
             else
                 EnemieAtCauldron.Add(Instantiate(EnemiesPrefabs[2], spawnPosition, transform.rotation));

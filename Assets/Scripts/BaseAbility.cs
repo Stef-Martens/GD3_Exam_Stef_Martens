@@ -10,7 +10,7 @@ public abstract class BaseAbility : MonoBehaviour
         ChangeUI(Color.gray, null, "Not available", "Ability needs to be brewed.");
     }
     public virtual void Update() { }
-    public abstract int CooldownTime { get; }
+    public abstract float CooldownTime { get; }
 
     public virtual void ChangeUI(Color color, Sprite sprite, string name, string description)
     {

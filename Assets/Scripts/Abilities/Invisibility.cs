@@ -8,7 +8,7 @@ public class Invisibility : BaseAbility
     public Color CircleColor;
     public string AbilityName;
     public string Description;
-    public override int CooldownTime
+    public override float CooldownTime
     {
         get { return 5; }
     }
