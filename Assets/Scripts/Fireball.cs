@@ -6,7 +6,6 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     public Vector3 Destination;
-
     private int radius = 8;
     private int force = 100;
     public int IndexRevealer;
